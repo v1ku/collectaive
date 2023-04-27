@@ -12,18 +12,20 @@ The backend is built using Flask and is located in the `stern` folder.
 ```
 stern/
 │
-├── __init__.py
-├── models.py
-├── server.py
-├── views.py
-├── config.py
-├── wsgi.py
+├── app/ (Recommended: move your app files into a separate 'app' directory)
+│ ├── init.py
+│ ├── models.py
+│ ├── server.py
+│ ├── views.py
+│ └── config.py
 │
 ├── migrations/
 │
 ├── pycache/
 │
 ├── venv/
+│
+└── wsgi.py
 ```
 
 ### Frontend
@@ -34,28 +36,33 @@ The frontend is built using Vue.js and is located in the `bow` folder.
 bow/
 │
 ├── public/
-│   ├── index.html
-│   └── favicon.ico
+│ ├── index.html
+│ └── favicon.ico
 │
 ├── src/
-│   ├── assets/
-│   │
-│   ├── components/
-│   │   ├── ChatMenu.vue
-│   │   ├── ChatList.vue
-│   │   ├── ChatInput.vue
-│   │   ├── Login.vue
-│   │   ├── ChatViewer.vue
-│   │   ├── ChatRoom.vue
-│   │   ├── UserSettings.vue
-│   │
-│   │
-│   ├── App.vue
-│   ├── main.js
-│   ├── router.js
-│   ├── socket.js
-│   ├── store.js
-│   └── main.css
+│ ├── assets/
+│ │
+│ ├── components/
+│ │ ├── ChatMenu.vue
+│ │ ├── ChatList.vue
+│ │ ├── ChatInput.vue
+│ │ ├── Login.vue
+│ │ ├── ChatViewer.vue
+│ │ ├── ChatRoom.vue
+│ │ └── UserSettings.vue
+│ │
+│ ├── router/
+│ │ └── index.js 
+│ │
+│ ├── store/
+│ │ └── index.js 
+│ │
+│ ├── socket/
+│ │ └── index.js 
+│ │
+│ ├── App.vue
+│ ├── main.js
+│ └── main.css
 │
 ├── tailwind.config.js
 │
