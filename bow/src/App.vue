@@ -7,7 +7,7 @@
     </header>
     <main>
       <div class="container mx-auto">
-        <router-view></router-view>
+        <router-view :user="user" :isAuthenticated="isAuthenticated"></router-view>
       </div>
     </main>
   </div>
@@ -16,6 +16,14 @@
 <script>
 export default {
   name: 'App',
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    isAuthenticated() {
+      return this.$store.state.isAuthenticated;
+    },
+  },
   data() {
     return {
       darkModeEnabled: false,

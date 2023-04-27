@@ -1,36 +1,30 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Login from './components/Login.vue';
-import Register from './components/Register.vue';
-import ChatRoom from './components/ChatRoom.vue';
+import { createRouter, createWebHistory } from 'vue-router';
+import Login from '../components/Login.vue';
+import ChatRoom from '../components/ChatRoom.vue';
 
-Vue.use(Router);
+const routes = [
+  {
+    path: '/',
+    redirect: '/login',
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login,
+  },
+  {
+    path: '/chatroom',
+    name: 'chatroom',
+    component: ChatRoom,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+];
 
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      redirect: '/login',
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login,
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: Register,
-    },
-    {
-      path: '/chatroom',
-      name: 'chatroom',
-      component: ChatRoom,
-      meta: {
-        requiresAuth: true,
-      },
-    },
-  ],
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
 });
+
+export default router;
