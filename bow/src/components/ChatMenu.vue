@@ -37,7 +37,7 @@
   </template>
   
   <script>
-  import UserSettings from './UserSettings.vue';
+  import UserSettings from './UserSettings';
   
   export default {
     components: {
