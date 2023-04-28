@@ -1,7 +1,7 @@
 # views.py
 from flask import request, jsonify
 from .server import app, socketio, db
-from .models import User, Message
+from .models import User, ChatGroup, Message
 from flask_login import login_user, login_required, logout_user, current_user
 from flask_socketio import join_room, leave_room
 from datetime import datetime
@@ -43,6 +43,65 @@ def login():
 def logout():
     logout_user()
     return jsonify({"success": "Logged out successfully"}), 200
+
+@app.route('/chat_groups', methods=['POST'])
+@login_required
+def create_chat_group():
+    data = request.get_json()
+    name = data['name']
+
+    if ChatGroup.query.filter_by(name=name).first() is not None:
+        return jsonify({"error": "Chat group name already exists"}), 400
+
+    new_chat_group = ChatGroup(name=name)
+    new_chat_group.members.append(current_user)
+    db.session.add(new_chat_group)
+    db.session.commit()
+
+    return jsonify({"success": "Chat group created successfully", "chat_group_id": new_chat_group.id}), 201
+
+# Get all chat groups for the current user
+@app.route('/chat_groups', methods=['GET'])
+@login_required
+def get_chat_groups():
+    chat_groups = current_user.chat_groups.all()
+    chat_groups_data = [{"id": chat_group.id, "name": chat_group.name} for chat_group in chat_groups]
+
+    return jsonify(chat_groups_data), 200
+
+# Update a chat group
+@app.route('/chat_groups/<int:chat_group_id>', methods=['PUT'])
+@login_required
+def update_chat_group(chat_group_id):
+    data = request.get_json()
+    name = data['name']
+
+    chat_group = ChatGroup.query.get(chat_group_id)
+
+    if chat_group is None:
+        return jsonify({"error": "Chat group not found"}), 404
+
+    if ChatGroup.query.filter_by(name=name).first() is not None:
+        return jsonify({"error": "Chat group name already exists"}), 400
+
+    chat_group.name = name
+    db.session.commit()
+
+    return jsonify({"success": "Chat group updated successfully"}), 200
+
+# Delete a chat group
+@app.route('/chat_groups/<int:chat_group_id>', methods=['DELETE'])
+@login_required
+def delete_chat_group(chat_group_id):
+    chat_group = ChatGroup.query.get(chat_group_id)
+
+    if chat_group is None:
+        return jsonify({"error": "Chat group not found"}), 404
+
+    db.session.delete(chat_group)
+    db.session.commit()
+
+    return jsonify({"success": "Chat group deleted successfully"}), 200
 
 # Add user to the room and broadcast a message
 @socketio.on("join_room")
