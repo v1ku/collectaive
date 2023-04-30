@@ -1,18 +1,18 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_socketio import SocketIO
-from .config import Config
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-app.config.from_object(Config)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-socketio = SocketIO(app, cors_allowed_origins="*")
+app.config['SECRET_KEY'] = 'secret!'
+socketio = SocketIO(app, cors_allowed_origins='*')
 
-# Now import your views and models
-from . import views
-from . import models
+@socketio.on('connect')
+def test_connect():
+    print('Client connected')
+    emit('my response', {'data': 'Connected'})
+
+@socketio.on('disconnect')
+def test_disconnect():
+    print('Client disconnected')
 
 if __name__ == '__main__':
     socketio.run(app)

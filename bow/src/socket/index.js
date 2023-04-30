@@ -1,3 +1,4 @@
+// socket/index.js
 import { io } from 'socket.io-client';
 
 const connectionOptions = {

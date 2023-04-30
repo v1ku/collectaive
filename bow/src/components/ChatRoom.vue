@@ -17,10 +17,10 @@
 
 <script>
 import { mapState } from 'vuex';
-import ChatMenu from '@/components/ChatMenu.vue';
-import ChatList from '@/components/ChatList.vue';
-import ChatViewer from '@/components/ChatViewer.vue';
-import ChatInput from '@/components/ChatInput.vue';
+import ChatMenu from './ChatMenu.vue';
+import ChatList from './ChatList.vue';
+import ChatViewer from './ChatViewer.vue';
+import ChatInput from './ChatInput.vue';
 
 export default {
   name: 'ChatRoom',
