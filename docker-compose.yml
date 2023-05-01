@@ -12,7 +12,5 @@ services:
     build: ./bow
     image: bow:1.0.0
     container_name: bow
-    volumes:
-      - ./bow/dist:/usr/share/nginx/html
     ports:
       - "8080:80"
