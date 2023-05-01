@@ -1,9 +1,0 @@
-Flask
-Flask-SocketIO
-Flask-SQLAlchemy
-Flask-Login
-Flask-Migrate
-eventlet
-gunicorn
-psycopg2-binary
-flask-migrate
