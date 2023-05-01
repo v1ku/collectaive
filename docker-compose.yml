@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  stern:
+    build: ./stern
+    image: stern:1.0.0
+    container_name: stern
+    ports:
+      - "5000:5000"
+
+  bow:
+    build: ./bow
+    image: bow:1.0.0
+    container_name: bow
+    volumes:
+      - ./bow/dist:/usr/share/nginx/html
+    ports:
+      - "8080:80"

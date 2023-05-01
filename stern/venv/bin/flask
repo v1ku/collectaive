@@ -1,4 +1,4 @@
-#!/home/vishnu/code/collectaive/stern/venv/bin/python3
+#!/home/v1/Documents/code/collectaive/stern/venv/bin/python3.10
 # -*- coding: utf-8 -*-
 import re
 import sys
