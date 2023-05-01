@@ -34,8 +34,8 @@ export default {
     ...mapState(['isAuthenticated']),
   },
   watch: {
-    isAuthenticated() {
-      if (!this.isAuthenticated) {
+    isAuthenticated(newValue) {
+      if (!newValue) {
         this.$router.push('/login');
       }
     },
@@ -47,3 +47,4 @@ export default {
   },
 };
 </script>
+

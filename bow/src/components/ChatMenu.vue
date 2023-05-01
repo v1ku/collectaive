@@ -37,23 +37,27 @@
   </template>
   
   <script>
-  import UserSettings from './UserSettings';
-  
-  export default {
-    components: {
-      UserSettings,
-    },
-    computed: {
-      currentUser() {
-        return this.$store.state.user;
-      },
-    },
-    data() {
+import UserSettings from './UserSettings';
+
+export default {
+  components: {
+    UserSettings,
+  },
+  computed: {
+    currentUser() {
       return {
-        notifications: true,
-        showDropdown: false,
+        name: 'John Doe',
+        status: 'Online',
+        isOnline: true,
       };
     },
+  },
+  data() {
+    return {
+      notifications: true,
+      showDropdown: false,
+    };
+  },
     methods: {
       toggleNotifications() {
         this.notifications = !this.notifications;

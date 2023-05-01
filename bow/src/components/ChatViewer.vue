@@ -1,29 +1,24 @@
 <template>
-    <div class="chat-input p-4">
-      <input
-        type="text"
-        v-model="message"
-        placeholder="Type a message..."
-        class="border rounded w-full p-2 mr-2"
-      />
-      <button class="bg-blue-500 text-white rounded p-2" @click="sendMessage">Send</button>
+  <div class="flex-grow overflow-y-auto p-4">
+    <div v-for="msg in messages" :key="msg.id" class="mb-4">
+      <div class="font-bold">{{ msg.user }}</div>
+      <div>{{ msg.content }}</div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'ChatInput',
-    data() {
-      return {
-        message: '',
-      };
-    },
-    methods: {
-      sendMessage() {
-        console.log('Sending message:', this.message);
-        this.message = '';
-      },
-    },
-  };
-  </script>
-  
+  </div>
+</template>
+
+<script>
+export default {
+  name: "ChatViewer",
+  data() {
+    return {
+      messages: [
+        // Dummy data
+        { id: 1, user: "User1", content: "Hello!" },
+        { id: 2, user: "User2", content: "Hi there!" },
+        { id: 3, user: "User1", content: "How are you?" },
+      ],
+    };
+  },
+};
+</script>

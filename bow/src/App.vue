@@ -14,14 +14,15 @@
 </template>
 
 <script>
+import store from './store/index.js';
 export default {
   name: 'App',
   computed: {
     user() {
-      return this.$store.state.user;
+      return store.state.user;
     },
     isAuthenticated() {
-      return this.$store.state.isAuthenticated;
+      return store.state.isAuthenticated;
     },
   },
   data() {

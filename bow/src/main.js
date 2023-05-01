@@ -1,21 +1,15 @@
+// src/main.js
 import { createApp } from 'vue';
 import App from './App.vue';
-import VueSocketIO from 'vue-socket.io';
-import io from 'socket.io-client';
-
-console.log('before creating app');
+import router from './router';
+import store from './store';
+import socket from './socket';
 
 const app = createApp(App);
 
-console.log('after creating app');
+app.use(router);
+app.use(store);
 
-app.use(new VueSocketIO({
-  debug: true,
-  connection: io('http://localhost:5000'), // Change the URL to your own Socket.IO server
-}));
-
-console.log('before mounting app');
+app.config.globalProperties.$socket = socket;
 
 app.mount('#app');
-
-console.log('after mounting app');
