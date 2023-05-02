@@ -1,23 +1,10 @@
-<template>
-  <v-app>
-    <v-main>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
-</template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
-}
+<script setup lang="ts">
+useHead({
+  title: "Vuetify 3 template",
+  meta: [{ name: "description", content: "Opinionated Vuetify Starter Template" }],
+});
 </script>
+
+<template>
+  <RouterView />
+</template>
