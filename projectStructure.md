@@ -18,36 +18,36 @@ stern/
 ├── venv/
 
 # Frontend
-bow/
-│
-├── public/
+.
+├── public
+│   ├── favicon.ico
 │   ├── index.html
-│   └── favicon.ico
-│
-├── src/
-│   ├── assets/
-│   │
-│   ├── components/
-│   │   ├── ChatMenu.vue
-│   │   ├── ChatList.vue
-│   │   ├── ChatInput.vue
-│   │   ├── Login.vue
-│   │   ├── ChatViewer.vue
-│   │   ├── ChatRoom.vue
-│   │   ├── UserSettings.vue
-│   │
-│   │
-│   ├── App.vue
-│   ├── main.js
-│   ├── router.js
-│   ├── socket.js
-│   ├── store.js
-│   └── main.css
-│
-├── tailwind.config.js
-│
-├── babel.config.js
-│
-├── package.json
-│
-└── jsconfig.json
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── components
+    │   ├── ChatWindow
+    │   │   ├── MainChatArea
+    │   │   └── MemberList
+    │   ├── Navbar
+    │   │   ├── Navbar.jsx
+    │   │   └── Navbar.module.css
+    │   └── Sidebar
+    │       ├── ChannelList
+    │       └── ServerList
+    ├── App.css
+    ├── App.jsx
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    ├── reportWebVitals.js
+    ├── setupTests.js
+    ├── tailwind.config.js
+    └── ThemeContext.js
+.gitignore
+package.json
+postcss.config.js
+README.md

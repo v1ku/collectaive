@@ -1,0 +1,12 @@
+/* src/components/MemberList.css */
+.member-list {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    position: fixed;
+    top: 4rem;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+  }
+  
