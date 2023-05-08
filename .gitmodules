@@ -1,3 +1,6 @@
 [submodule "bow"]
 	path = bow
 	url = https://github.com/v1ku/collectaive-bow
+[submodule "stern"]
+	path = stern
+	url = https://github.com/v1ku/collective-stern
