@@ -1,0 +1,3 @@
+[submodule "bow"]
+	path = bow
+	url = https://github.com/v1ku/collectaive-bow
