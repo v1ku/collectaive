@@ -1,9 +1,0 @@
-/* src/globalStyles.css */
-.light-theme {
-    background-color: var(--theme-background-default);
-  }
-  
-  .dark-theme {
-    background-color: var(--theme-background-dark);
-  }
-  
